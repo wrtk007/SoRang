@@ -1,0 +1,4 @@
+CREAT TABLE IF NOT EXISTS <테이블명> (
+    user_no INT(10) NOT NULL,
+    PRIMARY KEY (user_no)
+)
