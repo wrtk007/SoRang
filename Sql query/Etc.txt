@@ -1,0 +1,6 @@
+LOAD DATA LOCAL INFILE 'C:/Users/ejko1/Desktop/Etc.csv'
+REPLACE INTO TABLE `Etc`
+COLUMNS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 LINES
+(@etc_no, @etc_name, @etc_rank, @etc_exp, @etc_origin, @hashtag1, @hashtag2, @hashtag3, @etc_score, @etc_img)														
+SET `etc_no`= @etc_no, `etc_name`=@etc_name, `etc_rank`= @etc_rank, `etc_exp` = @etc_exp, `etc_origin`= @etc_origin, `hashtag1`=@hashtag1, `hashtag2`=@hashtag2, `hashtag3` = @hashtag3, `etc_score`=@etc_score, `etc_img`=@etc_img
