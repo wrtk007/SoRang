@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS `team15`.`snack` (
     `matching1_no` INT(5),
     `matching2_no` INT(5),
     PRIMARY KEY (`snack_no`),
-    INDEX `beer_index` (`beer_no`, `beer_name`)
+    INDEX `snack_index` (`snack_no`, `snack_name`)
 )
