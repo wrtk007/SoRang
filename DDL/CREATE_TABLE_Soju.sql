@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `team15`.`Soju` (
     `soju_name` varchar(20) NOT NULL UNIQUE KEY,
     `soju_rank` INT(5) NOT NULL,
     `soju_exp` varchar(225),
+    `soju_origin` varchar(25),
     `hashtag1` INT(5),
     `hashtag2` INT(5),
     `hashtag3` INT(5),

@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `team15`.`Etc` (
     `etc_name` varchar(20) NOT NULL UNIQUE KEY,
     `etc_rank` INT(5) NOT NULL,
     `etc_exp` TEXT,
+    `etc_origin` varchar(25),
     `hashtag1` INT(5),
     `hashtag2` INT(5),
     `hashtag3` INT(5),

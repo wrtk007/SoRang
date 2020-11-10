@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `team15`.`Nonalcohol` (
     `nonalc_name` varchar(20) NOT NULL UNIQUE KEY,
     `nonalc_rank` INT(5) NOT NULL,
     `nonalc_exp` TEXT,
+    `nonalc_origin` varchar(25),
     `hashtag1` INT(5),
     `hashtag2` INT(5),
     `hashtag3` INT(5),
