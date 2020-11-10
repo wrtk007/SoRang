@@ -8,11 +8,6 @@
     <title>Drink Review</title>
 </head>
 <body>
-  <style>
-    .jumbotron{
-      background-color:#F8F8FF!important;
-    }
-  </style>
     <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.php">Drink Review</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="index.php">Home</a>
+              <a class="nav-link" href="index.php"> Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Rank</a>
@@ -50,6 +45,14 @@
     </nav>
     <article class="container">
 		<div class="jumbotron" sttle="background-color : #F8F8FF">
+        <div class="media">
+            <img src="..." class="align-self-start mr-3" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0">Top-aligned media</h5>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+        </div>
 		</div>
 
 		
