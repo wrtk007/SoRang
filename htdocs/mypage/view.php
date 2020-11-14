@@ -9,32 +9,74 @@
     <title>my review</title>
 </head>
 <style>
-        table{
-                border-top: 1px solid #444444;
-                border-collapse: collapse;
-        }
-        tr{
-                border-bottom: 1px solid #444444;
-                padding: 10px;
-        }
-        td{
-                border-bottom: 1px solid #efefef;
-                padding: 10px;
-        }
-        table .even{
-                background: #efefef;
-        }
-        .text{
-                text-align:center;
-                padding-top:20px;
-                color:#000000
-        }
-        .text:hover{
-                text-decoration: underline;
-        }
-        a:link {color : #57A0EE; text-decoration:none;}
-        a:hover { text-decoration : underline;}
+.view_table {
+border: 1px solid #444444;
+margin-top: 30px;
+}
+.view_title {
+height: 30px;
+text-align: center;
+background-color: #cccccc;
+color: white;
+width: 1000px;
+}
+.view_id {
+text-align: center;
+background-color: #EEEEEE;
+width: 30px;
+}
+.view_id2 {
+background-color: white;
+width: 60px;
+}
+.view_hit {
+background-color: #EEEEEE;
+width: 30px;
+text-align: center;
+}
+.view_hit2 {
+background-color: white;
+width: 60px;
+}
+.view_content {
+padding-top: 20px;
+border-top: 1px solid #444444;
+height: 500px;
+}
+.view_btn {
+width: 700px;
+text-align: center;
+margin: auto;
+margin-top: 50px;
+}
+.view_btn1 {
+height: 50px;
+width: 100px;
+font-size: 20px;
+text-align: center;
+background-color: white;
+border: 2px solid black;
+border-radius: 10px;
+}
+.view_comment_input {
+width: 700px;
+height: 500px;
+text-align: center;
+margin: auto;
+}
+.view_text3 {
+font-weight: bold;
+float: left;
+margin-left: 20px;
+}
+.view_com_id {
+width: 100px;
+}
+.view_comment {
+width: 500px;
+}
 </style>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="#">Drink Review</a>
@@ -71,51 +113,52 @@
           </ul>
         </div>
     </nav>
-<?php
+    <?php
                 $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
-                $query ="select * from user_review order by review_no desc";
+                $number = $_GET['number'];
+                session_start();
+                $query = "select review_title, review, review_id from user_review where review_no =$number";
                 $result = $connect->query($query);
-                $total = mysqli_num_rows($result);
+                $rows = mysqli_fetch_assoc($result);
  
-        ?>
-        <br><br>
-        <h2 align=center>게시판</h2>
-        <table align = center>
-        <thead align = "center">
-        <tr>
-        <td width = "50" align="center">번호</td>
-        <td width = "500" align = "center">제목</td>
-        <!-- <td width = "100" align = "center">작성자</td> -->
-        
-        </tr>
-        </thead>
- 
-        <tbody>
-        <?php
-                while($rows = mysqli_fetch_assoc($result)){ //DB에 저장된 데이터 수 (열 기준)
-                        if($total%2==0){
-        ?>                      <tr class = "even">
-                        <?php   }
-                        else{
-        ?>                      <tr>
-                        <?php } ?>
-                <td width = "50" align = "center"><?php echo $total?></td>
-                <td width = "500" align = "center">
-                <a href = "view.php?number=<?php echo $rows['review_no']?>">
-                <?php echo $rows['review_title']?></td>
-                  <!-- <td width = "100" align = "center"></td> -->
                 
-                </tr>
-        <?php
-                $total--;
-                }
         ?>
-        </tbody>
+ 
+        <table class="view_table" align=center>
+        <tr>
+                <td colspan="4" class="view_title"><?php echo $rows['review_title']?></td>
+        </tr>
+        <tr>
+                <td class="view_id">작성자</td>
+                <td class="view_id2"><?php echo $rows['review_id']?></td>
+        </tr>
+ 
+ 
+        <tr>
+                <td colspan="4" class="view_content" valign="top">
+                <?php echo $rows['review']?></td>
+        </tr>
         </table>
  
-        <div class = text>
-        <font style="cursor: hand"onClick="location.href='./write.php'">글쓰기</font>
+ 
+        <!-- MODIFY & DELETE -->
+        <div class="view_btn">
+                <button class="view_btn1" onclick="location.href='./myreview.php'">목록으로</button>
+                <button class="view_btn1" onclick="location.href='./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
+ 
+                <button class="view_btn1" onclick="location.href='./delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
         </div>
+
+
+        </tbody>
+        </table>
+        <div class="view_btn">
+                <button class="view_btn1" onclick="location.href='./write.php'">글쓰기</button>
+        </div>
+
+        <!-- <div class = text>
+        <font style="cursor: hand"onClick="location.href='./write.php'">글쓰기</font>
+        </div> -->
  
  
  

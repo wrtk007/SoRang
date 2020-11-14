@@ -37,14 +37,14 @@
 </style>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="#">Drink Review</a>
+        <a class="navbar-brand" href="../page/main.php">Drink Review</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="main.php"> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="../page/main.php"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Rank</a>
@@ -77,7 +77,12 @@
                 $result = $connect->query($query);
                 $total = mysqli_num_rows($result);
  
+                session_start();
+ 
+                
         ?>
+
+
         <br><br>
         <h2 align=center>게시판</h2>
         <table align = center>
