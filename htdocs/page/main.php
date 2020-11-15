@@ -24,7 +24,7 @@
               <a class="nav-link" href="#">Rank</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../snack/snack_home.php">Snack</a>
+              <a class="nav-link" href="../snack/snack_list.php">Snack</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Alcohol Map</a>
