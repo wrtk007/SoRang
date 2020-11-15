@@ -16,7 +16,7 @@
  
                 if(!isset($_SESSION['userid'])) {
         ?>              <script>
-                                alert("권한이 없습니다.");
+                                alert("You need to login");
                                 location.replace("<?php echo $URL?>");
                         </script>
         <?php   }
@@ -25,23 +25,23 @@
         <form method = "get" action = "modify_action.php">
         <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
                 <tr>
-                <td height=20 align= center bgcolor=#ccc><font color=white> 글수정</font></td>
+                <td height=20 align= center bgcolor=#ccc><font color=white> modify</font></td>
                 </tr>
                 <tr>
                 <td bgcolor=white>
                 <table class = "table2">
                 <tr>
-                        <td>작성자</td>
+                        <td>id</td>
                         <td><input type="hidden" name="id" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
                         </tr>
  
                         <tr>
-                        <td>제목</td>
+                        <td>title</td>
                         <td><input type = text name = title size=60 value="<?=$title?>"></td>
                         </tr>
  
                         <tr>
-                        <td>내용</td>
+                        <td>content</td>
                         <td><textarea name = content cols=85 rows=15><?=$content?></textarea></td>
                         </tr>
  
@@ -49,7 +49,7 @@
  
                         <center>
                         <input type="hidden" name="number" value="<?=$number?>">
-                        <input type = "submit" value="작성">
+                        <input type = "submit" value="write">
                         </center>
                 </td>
                 </tr>
@@ -57,7 +57,7 @@
         <?php   }
                 else {
         ?>              <script>
-                                alert("권한이 없습니다.");
+                                alert("You need to login");
                                 location.replace("<?php echo $URL?>");
                         </script>
         <?php   }

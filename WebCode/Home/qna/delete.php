@@ -11,7 +11,7 @@
 ?>
 
 <script>
-            alert("삭제되었습니다.");
+            alert("deleted");
             location.replace("./index.php");
 </script>
 <?php    }

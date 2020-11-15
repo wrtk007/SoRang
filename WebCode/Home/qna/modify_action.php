@@ -9,7 +9,7 @@
     if($result) {
 ?>
         <script>
-            alert("수정되었습니다.");
+            alert("modified");
             location.replace("./view.php?number=<?=$number?>");
         </script>
 <?php    }

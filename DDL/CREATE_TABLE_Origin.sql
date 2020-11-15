@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS `team15`.`origin_box` (`no` INT(5) NOT NULL AUTO_INCREMENT, `origin` varchar(30), primary key(`no`)) ;

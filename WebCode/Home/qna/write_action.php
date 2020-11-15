@@ -17,7 +17,7 @@
                 $result = $connect->query($query);
                 if($result){
 ?>                  <script>
-                        alert("<?php echo "글이 등록되었습니다."?>");
+                        alert("<?php echo "registered"?>");
                         location.replace("<?php echo $URL?>");
                     </script>
 <?php

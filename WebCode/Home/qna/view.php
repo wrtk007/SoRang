@@ -15,9 +15,9 @@
 
 			</tr>
 			<tr>
-					<td class="view_id">작성자</td>
+					<td class="view_id">id</td>
 					<td class="view_id2"><?php echo $rows['id']?></td>
-					<td class="view_date">작성일</td>
+					<td class="view_date">date</td>
 					<td class="view_date2"><?php echo $rows['date']?></td>
 			</tr>
 	 
@@ -31,9 +31,9 @@
  
         <!-- MODIFY & DELETE -->
         <div class="view_btn">
-                <button class="view_btn1" onclick="location.href='./index.php'">목록으로</button>
-                <button class="view_btn1" onclick="location.href='./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
-				<button class="view_btn1" onclick="location.href='./delete.php?number=<?=$number?>&id=id=<?=$_SESSION['userid']?>'">삭제</button>
+                <button class="view_btn1" onclick="location.href='./index.php'">back</button>
+                <button class="view_btn1" onclick="location.href='./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">modify</button>
+				<button class="view_btn1" onclick="location.href='./delete.php?number=<?=$number?>&id=id=<?=$_SESSION['userid']?>'">delete</button>
                 
         </div>
 
