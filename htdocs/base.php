@@ -1,6 +1,8 @@
 <?php
 static $indexphp = 'http://localhost/index.php';
 static $home = 'http://localhost/page/main.php';
+static $mapalchol = 'http://localhost/map/mapalchol.php';
+static $maporigin = 'http://localhost/map/maporigin.php';
 static $snackphp = 'http://localhost/snack/snack_list.php';
 ?>
 
@@ -30,8 +32,14 @@ static $snackphp = 'http://localhost/snack/snack_list.php';
             <li class="nav-item">
               <a class="nav-link" href="#" onclick="location.href='<?php echo $snackphp?>'">Snack</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Alcohol Map</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Alcohol Map
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#" onclick="location.href='<?php echo $maporigin?>'">Origin</a>
+                <a class="dropdown-item" href="#" onclick="location.href='<?php echo $mapalchol?>'">Alchol Type</a>
+              </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

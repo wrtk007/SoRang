@@ -26,8 +26,14 @@
             <li class="nav-item">
               <a class="nav-link" href="../snack/snack_list.php">Snack</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Alcohol Map</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Alcohol Map
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="../map/maporigin.php">Origin</a>
+                <a class="dropdown-item" href="../map/mapalchol.php">Alchol Type</a>
+              </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

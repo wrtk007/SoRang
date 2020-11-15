@@ -1,6 +1,6 @@
 <?php
   include "../base.php";
-    $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
+  $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
 ?>
 
 <article class="container">
