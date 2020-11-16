@@ -1,0 +1,1 @@
+INSERT INTO `team15`.`alcoholtable` (`tab_no`, `tab_name`) VALUES ('1', 'beer'),('2', 'soju'),('3', 'makgeolli'),('4', 'cocktail'),('5', 'wine'),('6', 'nonalcohol'),('7', 'liquor'),('8', 'etc')

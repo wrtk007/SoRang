@@ -1,9 +1,11 @@
 <?php
 static $indexphp = 'http://localhost/index.php';
-static $home = 'http://localhost/page/main.php';
+static $home = 'http://localhost/home/home.php';
 static $mapalchol = 'http://localhost/map/mapalchol.php';
 static $maporigin = 'http://localhost/map/maporigin.php';
 static $snackphp = 'http://localhost/snack/snack_list.php';
+static $logoutphp = 'http://localhost/member/member/logout.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,9 @@ static $snackphp = 'http://localhost/snack/snack_list.php';
     <title>Drink Review</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+
         <a class="navbar-brand" href=# onclick="location.href='<?php echo $indexphp?>'"> Drink Review </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -24,7 +28,7 @@ static $snackphp = 'http://localhost/snack/snack_list.php';
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#" onclick="location.href='<?php echo $home?>'"> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#" onclick="location.href='<?php echo $indexphp?>'"> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Rank</a>
@@ -46,8 +50,8 @@ static $snackphp = 'http://localhost/snack/snack_list.php';
                 My Page
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="./member/member/login_ok.php">Log in</a>
-                <a class="dropdown-item" href="#">Sign up</a>
+                <a class="dropdown-item" href="onclick="location.href='<?php echo $logout.php?>'"">Log out</a>
+                <a class="dropdown-item" onclick="location.href='<?php echo $signupphp?>'">Sign up</a>
                 <a class="dropdown-item" href="#">My Page</a>
               </div>
             </li>

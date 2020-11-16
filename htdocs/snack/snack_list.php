@@ -1,6 +1,6 @@
 <?php
   include "../base.php";
-  $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
+// include config 필요
 ?>
 
 <article class="container">
@@ -13,6 +13,7 @@
       Choose the type of alcohol
     </button>
     <div class="dropdown-menu">
+
       <a class="dropdown-item"  href="./snack_beer.php">Beer</a>
       <a class="dropdown-item" href="./snack_soju.php">Soju</a>
       <a class="dropdown-item" href="./snack_makgeolli.php">Makgeolli</a>
@@ -28,11 +29,6 @@
 
   <div class="list-group">
   <?php
-  // 술 종류 선택
-  //$sql_alctype = "beer";
-
-//select name, group_concat(name) as 'snack_ids' from snack group by matching1_table order by matching1_no
-
   // 술 리스트 보여주기
   $sql_alc = "select matching1_table,group_concat(snack_name order by matching1_no) as 'snack_ids' from snack group by matching1_table order by matching1_table";
   //"select no,exp, first_value(name) over(partion by matching1_table order by matching1_no) from snack";//"select no, name, exp from soju";
@@ -65,7 +61,6 @@
         <p class="mb-1">'.$result_alc["snack_ids"].'
         <a href="./snack_'.$sql_alctype.'.php">더보기</a></p>
         <br>
-
     </a>
     </div>
   ';
