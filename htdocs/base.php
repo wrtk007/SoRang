@@ -1,9 +1,11 @@
 <?php
 static $indexphp = 'http://localhost/index.php';
+static $home = 'http://localhost/home/home.php';
+static $mapalchol = 'http://localhost/map/mapalchol.php';
+static $maporigin = 'http://localhost/map/maporigin.php';
 static $snackphp = 'http://localhost/snack/snack_list.php';
-static $loginphp = 'http://localhost/member/login.php';
 static $logoutphp = 'http://localhost/member/member/logout.php';
-static $signupphp = 'http://localhost/member/member/member.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,9 @@ static $signupphp = 'http://localhost/member/member/member.php';
     <title>Drink Review</title>
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light">
+
         <a class="navbar-brand" href=# onclick="location.href='<?php echo $indexphp?>'"> Drink Review </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,15 +36,21 @@ static $signupphp = 'http://localhost/member/member/member.php';
             <li class="nav-item">
               <a class="nav-link" href="#" onclick="location.href='<?php echo $snackphp?>'">Snack</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Alcohol Map</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Alcohol Map
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#" onclick="location.href='<?php echo $maporigin?>'">Origin</a>
+                <a class="dropdown-item" href="#" onclick="location.href='<?php echo $mapalchol?>'">Alchol Type</a>
+              </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 My Page
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="onclick="location.href='<?php echo $login.php?>'"">Log in</a>
+                <a class="dropdown-item" href="onclick="location.href='<?php echo $logout.php?>'"">Log out</a>
                 <a class="dropdown-item" onclick="location.href='<?php echo $signupphp?>'">Sign up</a>
                 <a class="dropdown-item" href="#">My Page</a>
               </div>
