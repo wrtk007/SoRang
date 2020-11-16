@@ -5,3 +5,7 @@
 .forlink {
     cursor:pointer;
 }
+
+h4 .card-title {
+    text-align: center!important;
+}

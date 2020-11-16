@@ -1,6 +1,9 @@
 <?php
 static $indexphp = 'http://localhost/index.php';
 static $snackphp = 'http://localhost/snack/snack_list.php';
+static $loginphp = 'http://localhost/member/login.php';
+static $logoutphp = 'http://localhost/member/member/logout.php';
+static $signupphp = 'http://localhost/member/member/member.php';
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +40,8 @@ static $snackphp = 'http://localhost/snack/snack_list.php';
                 My Page
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="./member/member/login_ok.php">Log in</a>
-                <a class="dropdown-item" href="#">Sign up</a>
+                <a class="dropdown-item" href="onclick="location.href='<?php echo $login.php?>'"">Log in</a>
+                <a class="dropdown-item" onclick="location.href='<?php echo $signupphp?>'">Sign up</a>
                 <a class="dropdown-item" href="#">My Page</a>
               </div>
             </li>
