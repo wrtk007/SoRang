@@ -1,5 +1,3 @@
-
-
 INSERT INTO `origin_box` VALUES ('0', 'Australia');
 INSERT INTO `origin_box` VALUES ('0', 'Austria');
 INSERT INTO `origin_box` VALUES ('0', 'Barbados');
