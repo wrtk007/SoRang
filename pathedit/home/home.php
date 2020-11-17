@@ -1,6 +1,7 @@
 <?php 
 	include '../base.php';
 	include '../config.php';
+
 	$userid = $_SESSION['userid'];
 
 	static $hash1;
@@ -9,7 +10,6 @@
 	$hash2 = $_SESSION['hash2'];
 	static $hash3;
 	$hash3 = $_SESSION['hash3'];
-
 
 	static $tab1;
 	static $tab2;
