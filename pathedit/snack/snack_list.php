@@ -32,7 +32,7 @@
   // 술 리스트 보여주기
   $sql_alc = "select matching1_table,group_concat(name order by matching1_no) as 'snack_ids' from snack group by matching1_table order by matching1_table";
   //"select no,exp, first_value(name) over(partion by matching1_table order by matching1_no) from snack";//"select no, name, exp from soju";
-  $run_alc = mysqli_query($connect, $sql_alc);
+  $run_alc = mysqli_query($db, $sql_alc);
 
   while($result_alc = mysqli_fetch_array($run_alc)) {
     echo '
