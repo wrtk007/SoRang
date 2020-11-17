@@ -9,7 +9,7 @@
     static $hash2;
     static $hash3;
 
-    $hashsql = "SELECT taste_hash1, taste_hash2, taste_hash3 FROM user_info WHERE user_no=$userno IS NOT NULL";
+	$hashsql = "SELECT taste_hash1, taste_hash2, taste_hash3 FROM user_info WHERE user_no=$userno IS NOT NULL";
 	$hashrun = mysqli_query($db,$hashsql);
 
 	while($hashresult = mysqli_fetch_array($hashrun)) {
@@ -28,27 +28,31 @@
 
 	$hashnoarr = [$hash1, $hash2, $hash3];
 
-	// if user doesn't choose own favorite hashtag, then choose randomly
-	$newhashsql = "SELECT hashtag_no FROM hashtag WHERE hashtag_no NOT IN ('$hash1', '$hash2', '$hash3')";
-	$newhashrun = mysqli_query($db,$newhashsql);
+	if ($hash1 == NULL || $hash2 == NULL || $hash3 == NULL || $hash1 ==0 || $hash2==0 || $hash3 == 0) {
+		// if user doesn't choose own favorite hashtag, then choose randomly
+		$newhashsql = "SELECT hashtag_no FROM hashtag WHERE hashtag_no NOT IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
+		$newhashrun = mysqli_query($db,$newhashsql);
 
-	while($newhashresult = mysqli_fetch_array($newhashrun)) {
-		$i = 0;
-		if ($hash1 == NULL) {
-			$hash1 = $newhashresult[$i];
-			$i++;
-		} else if ($hash2 == NULL ) {
-			$hash2 = $newhashresult[$i];
-			$i++;
-		} else {
-			$hash3 = $newhashresult[$i];
-			$i++;
+		while($newhashresult = mysqli_fetch_array($newhashrun)) {
+			$i = 0;
+			if ($hash1 == 0 || $hash1 == NULL) {
+				$hash1 = $newhashresult[$i];
+				$i++;
+			} else if ($hash2 == 0 || $hash2 == NULL ) {
+				$hash2 = $newhashresult[$i];
+				$i++;
+			} else if ($hash3 == 0|| $hash3 == NULL){
+				$hash3 = $newhashresult[$i];
+				$i++;
+			}
 		}
 	}
+	
+	$hashnoarr=[$hash1, $hash2, $hash3];
 
-    $hash1sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash1'";
-	$hash2sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash2'";
-	$hash3sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash3'";
+    $hash1sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = $hash1";
+	$hash2sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = $hash2";
+	$hash3sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = $hash3";
 
 	$hashrun = mysqli_query($db,$hash1sql);
     $hash1txt = mysqli_fetch_row($hashrun);
@@ -83,7 +87,7 @@ for ($a=1; $a<4; $a++){
 		<div class="row">';
 		for($c=0; $c<3; $c++){
 			$resultarr = [];
-			$alcsql = "SELECT no, name, exp FROM $tabarr[$b] WHERE '$hashnoarr[$b]' IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
+			$alcsql = "SELECT no, name, exp FROM $tabarr[$b] WHERE $hashnoarr[$b] IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
 			$alcrun = mysqli_query($db, $alcsql);
 			while (	$alcresult = mysqli_fetch_array($alcrun)) {
 				$d=0;
@@ -99,7 +103,6 @@ for ($a=1; $a<4; $a++){
 				<div class="card-body">
 					<h5 class="card-title">'.$resultarr[$d][0].'</h5>
 					<p class="card-text"> '.$resultarr[$d][1].' </p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
 				</div>
 				</div>
 			</div>';  

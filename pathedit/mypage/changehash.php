@@ -20,14 +20,13 @@
 		$hash2 = $hashresult[1];
 		$hash3 = $hashresult[2];
     }
-
+  
     if ($newhash1 == "") {$newhash1 = 0;}
     if ($newhash2 == "") {$newhash2 = 0;}
     if ($newhash3 == "") {$newhash3 = 0;}
 
     $hashsql="UPDATE user_info SET taste_hash1=$newhash1, taste_hash2=$newhash2,taste_hash3=$newhash3 WHERE user_no=$userno;";
+    // echo $hashsql;
     mysqli_query($db, $hashsql);
-    echo $hashsql;
-
-    echo "<script>alert('Your favorite hashtags are changed.'); location.href='/mypage/mypage.php';</script>";
+    echo "<script>alert('Your favorite hashtags are changed.'); document.location.href='../home/home.php'; </script>";
 ?>
