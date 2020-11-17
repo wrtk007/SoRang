@@ -33,14 +33,14 @@
 </style>
 <body>
 <?php			
-                include "../base.php";  // including base 
-                include "../config.php";  // including configuration file
-                $query ="select * from qna order by number desc";
-				$result = mysqli_query($db,$query);
-                
-                $total = mysqli_num_rows($result);
- 
-        ?>
+        include "../base.php";  // including base 
+        include "../config.php";  // including configuration file
+        $query ="select * from qna order by number desc";
+        $result = mysqli_query($db,$query);
+        
+        $total = mysqli_num_rows($result);
+
+?>
         <h2 align=center>Q&A</h2>
         <table align = center>
         <thead align = "center">

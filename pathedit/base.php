@@ -55,7 +55,6 @@ static $myqnaphp = 'http://localhost/qna/qna.php';
                 <a class="nav-link" href="#" onclick="location.href='<?php echo $myreviewphp?>'">My Review</a>
                 <a class="nav-link" href="#" onclick="location.href='<?php echo $myqnaphp?>'">My QnA</a>
                 <a class="nav-link" href="#" onclick="location.href='<?php echo $logoutphp?>'">Log out</a>
-
               </div>
             </li>
             <li class="nav-item">

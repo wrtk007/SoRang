@@ -9,17 +9,6 @@
         }
 	
 ?>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/TK.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>Map origin</title>
-</head>
-<body>
-   
-    
 <article class="container">
 		<div class="jumbotron" sttle="background-color : #F8F8FF">
 			
@@ -57,7 +46,7 @@
         $des=$_POST["originName"]; 
         $count = "SELECT count(name) From(SELECT name,origin from beer UNION SELECT name,origin from soju UNION SELECT name,origin from cocktail UNION SELECT name,origin from etc UNION SELECT name,origin from liquor UNION SELECT name,origin from wine UNION SELECT name,origin from makgeolli) as t where origin='".$des."'  group by origin order by origin";
         $aa = "SELECT name From(SELECT name,origin from beer UNION SELECT name,origin from soju UNION SELECT name,origin from cocktail UNION SELECT name,origin from etc UNION SELECT name,origin from liquor UNION SELECT name,origin from wine UNION SELECT name,origin from makgeolli) as t where origin='".$des."' ";   //des가 받아온값이야          
-        $count_res = mysqli_query($mysqli,$count);
+        $count_res = mysqli_query($db,$count);
 		$res=mysqli_query($mysqli,$aa);
         
         echo "<h4>$des</h4>";
@@ -83,9 +72,4 @@
 
 		
 
-    </article>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-</body>
-</html>
+</article>

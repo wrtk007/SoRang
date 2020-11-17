@@ -1,4 +1,4 @@
-
+<!DOCTYPE>
  <?php
                 include "../base.php";  // including base 
                 $URL = "./qna.php"; 
