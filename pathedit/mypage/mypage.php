@@ -109,7 +109,7 @@
             <select name="hash1" id="hash1">
                 <option value="<?php echo $hash1;?>" selected> 
                     <?php 
-                        if ($hash1==NULL) {
+                        if ($hash1==0 || $hash1 == NULL) {
                             echo $Message;
                         } 
                         else {
@@ -121,7 +121,7 @@
                     givehash($db);
                 ?>
             </select>
-            <button>Delete the hashtag<?php deletehash($db, 'taste_hash1', $userno)?></button>
+
 
             <br>
             
@@ -129,7 +129,7 @@
             <select name="hash2" id="hash2">
                 <option value="<?php echo $hash2;?>" selected> 
                 <?php
-                    if ($hash2 == NULL) { 
+                    if ($hash2 == 0 || $hash2 == NULL) { 
                         echo $Message;
                     }
                     else {
@@ -141,7 +141,6 @@
                     givehash($db);
                 ?>
             </select>
-            <button>Delete the hashtag<?php deletehash($db, 'taste_hash2', $userno)?></button>
 
             <br>
 
@@ -149,7 +148,7 @@
             <select name="hash3" id="hash3">
                 <option value="<?php echo $hash3;?>" selected> 
                 <?php 
-                if ($hash3 == NULL)  {
+                if ($hash3 == 0 || $hash3==NULL)  {
                     echo $Message;
                 }
                 else {
@@ -160,7 +159,6 @@
                     givehash($db);
                 ?>
             </select>
-            <button>Delete the hashtag<?php deletehash($db, 'taste_hash3', $userno)?></button>
             <br>
             <input type="submit" value="End the hashtag edit"> </input>
         </form>
