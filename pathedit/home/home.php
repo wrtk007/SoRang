@@ -3,13 +3,20 @@
 	include '../config.php';
 
 	$userid = $_SESSION['userid'];
+	$userno = $_SESSION['userno'];
 
-	static $hash1;
-	$hash1 = $_SESSION['hash1'];
-	static $hash2;
-	$hash2 = $_SESSION['hash2'];
-	static $hash3;
-	$hash3 = $_SESSION['hash3'];
+    static $hash1;
+    static $hash2;
+    static $hash3;
+
+    $hashsql = "SELECT taste_hash1, taste_hash2, taste_hash3 FROM user_info WHERE user_no=$userno IS NOT NULL";
+	$hashrun = mysqli_query($db,$hashsql);
+
+	while($hashresult = mysqli_fetch_array($hashrun)) {
+		$hash1 = $hashresult[0];
+		$hash2 = $hashresult[1];
+		$hash3 = $hashresult[2];
+	}
 
 	static $tab1;
 	static $tab2;
@@ -39,19 +46,20 @@
 		}
 	}
 
-	$hash1sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash1'";
+    $hash1sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash1'";
 	$hash2sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash2'";
 	$hash3sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = '$hash3'";
 
 	$hashrun = mysqli_query($db,$hash1sql);
-	$hash1 = mysqli_fetch_row($hashrun);
+    $hash1txt = mysqli_fetch_row($hashrun);
+
 	$hashrun = mysqli_query($db,$hash2sql);
-	$hash2 = mysqli_fetch_row($hashrun);
+    $hash2txt = mysqli_fetch_row($hashrun);
+    
 	$hashrun = mysqli_query($db,$hash3sql);
-	$hash3 = mysqli_fetch_row($hashrun);
+    $hash3txt = mysqli_fetch_row($hashrun);
 
-
-	$hasharr = [$hash1[0], $hash2[0], $hash3[0]];
+	$hasharr = [$hash1txt[0], $hash2txt[0], $hash3txt[0]];
 
 	//choose random alchol type
 	$tabsql = "SELECT tab_name FROM alcoholtable ORDER BY RAND() LIMIT 3";
@@ -75,7 +83,8 @@ for ($a=1; $a<4; $a++){
 		<div class="row">';
 		for($c=0; $c<3; $c++){
 			$resultarr = [];
-			$alcsql = "SELECT no, name, exp FROM $tabarr[$b] WHERE '$hashnoarr[$b]' IN (hashtag1, hashtag2, hashtag3) ORDER BY RAND() LIMIT 3";
+			$alcsql = "SELECT no, name, exp FROM $tabarr[$b] WHERE '$hashnoarr[$b]' IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
+			echo $alcsql;
 			$alcrun = mysqli_query($db, $alcsql);
 			while (	$alcresult = mysqli_fetch_array($alcrun)) {
 				$d=0;
