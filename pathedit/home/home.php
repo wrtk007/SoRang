@@ -84,7 +84,6 @@ for ($a=1; $a<4; $a++){
 		for($c=0; $c<3; $c++){
 			$resultarr = [];
 			$alcsql = "SELECT no, name, exp FROM $tabarr[$b] WHERE '$hashnoarr[$b]' IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
-			echo $alcsql;
 			$alcrun = mysqli_query($db, $alcsql);
 			while (	$alcresult = mysqli_fetch_array($alcrun)) {
 				$d=0;
