@@ -1,6 +1,6 @@
 <?php
                 include "../base.php";  // including base 
-				include "../config.php";  // including configuration file
+                include "../config.php";  // including configuration file
                 $number = $_GET['number'];
                 session_start();
                 $query = "select title, content, date, id from qna where number =$number";

@@ -1,11 +1,6 @@
 <?php
   include "../base.php";
-<<<<<<< HEAD
   include "../config.php";
-  //$connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
-=======
-// include config 필요
->>>>>>> 9ca11a7d8ade068de2206f77889860708765b485
 ?>
 
 <article class="container">
