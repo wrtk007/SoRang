@@ -32,10 +32,11 @@
         a:hover { text-decoration : underline;}
 </style>
 <body>
-<?php			include "../base.php";  // including base 
+<?php			
+                include "../base.php";  // including base 
                 include "../config.php";  // including configuration file
                 $query ="select * from qna order by number desc";
-				$result = mysqli_query( $mysqli,$query);
+				$result = mysqli_query($db,$query);
                 
                 $total = mysqli_num_rows($result);
  

@@ -1,12 +1,11 @@
 <?php
-                include "../base.php";  // including base 
-                include "../config.php";  // including configuration file
-                $number = $_GET['number'];
-                session_start();
-                $query = "select title, content, date, id from qna where number =$number";
-                $result = mysqli_query( $mysqli,$query);
-                $rows = mysqli_fetch_assoc($result);
-        ?>
+        include "../base.php";  // including base 
+        include "../config.php";  // including configuration file
+        $number = $_GET['number'];
+        $query = "select title, content, date, id from qna where number =$number";
+        $result = mysqli_query( $db,$query);
+        $rows = mysqli_fetch_assoc($result);
+?>
         <link rel=stylesheet href='/css/common.css' type='text/css'>
         <table class="view_table" align=center>
 			<tr>

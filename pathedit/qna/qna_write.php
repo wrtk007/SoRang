@@ -1,7 +1,6 @@
-<!DOCTYPE>
+
  <?php
                 include "../base.php";  // including base 
-				session_start();
                 $URL = "./qna.php"; 
                 if(!isset($_SESSION['userid'])) {
         ?>

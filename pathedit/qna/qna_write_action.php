@@ -13,7 +13,7 @@
                 $query = "insert into qna (number,title, content, id,  date) 
                         values(null,'$title', '$content','$id', '$date')";
  
-				$result = mysqli_query( $mysqli,$query);
+				$result = mysqli_query( $db,$query);
                
                 if($result){
 ?>                  <script>
