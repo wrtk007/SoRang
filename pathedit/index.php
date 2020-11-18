@@ -26,7 +26,7 @@ include "config.php"; ?>
         	</tr>
         	<tr>
            		<td colspan="3" align="center" class="mem"> 
-              	<a href="/member/member/member.php">Sign up?</a>
+              	<a href="/member/member.php">Sign up?</a>
            </td>
         </tr>
     </table>

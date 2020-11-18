@@ -1,4 +1,5 @@
-<?php			
+<?php			       
+        ini_set('display_errors','0');
         include "../base.php";  // including base 
         include "../config.php";  // including configuration file
 
@@ -55,7 +56,10 @@
  
         <tbody>
         <?php
-                while($rows = mysqli_fetch_assoc($result)){ //DB에 저장된 데이터 수 (열 기준)
+                while($rows = mysqli_fetch_array($result)){ //DB에 저장된 데이터 수 (열 기준)
+                        $var = $rows['id'];
+                        $sql = "SELECT id FROM user_info WHERE user_no=$var";
+                        $result = mysqli_fetch_row(mysqli_query($db, $sql));
                         if($total%2==0){
         ?>                      <tr class = "even">
                         <?php   }
@@ -66,7 +70,7 @@
                 <td width = "500" align = "center">
                 <a href = "qna_view.php?number=<?php echo $rows['number']?>">
                 <?php echo $rows['title']?></td>
-                  <td width = "100" align = "center"><?php echo $userid?></td>
+                <td width = "100" align = "center"><?php echo $result[0]?></td>
                 <td width = "200" align = "center"><?php echo $rows['date']?></td>
                 
                 </tr>

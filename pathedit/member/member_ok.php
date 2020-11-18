@@ -1,6 +1,7 @@
 <?php
+    ini_set('display_errors','0');
 	include "../config.php";
-	include "../password.php";
+	include "password.php";
 
 	$userid = $_POST['userid'];
 	$userpw = password_hash($_POST['userpw'], PASSWORD_DEFAULT);
