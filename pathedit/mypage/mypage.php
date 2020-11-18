@@ -84,10 +84,6 @@
                 <td colspan="2">Change Password</td>
                 </tr>
                 <tr>
-                <td width="40%"><label>Current Password</label></td>
-                <td width="60%"><input type="password" name="currentPassword" class="txtField"/><span id="currentPassword"  class="required"></span></td>
-                </tr>
-                <tr>
                 <td><label>New Password</label></td>
                 <td><input type="password" name="newPassword" class="txtField"/><span id="newPassword" class="required"></span></td>
                 </tr>
