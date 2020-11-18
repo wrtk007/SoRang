@@ -22,7 +22,7 @@
             <?php
 				$originName = "SELECT DISTINCT origin from origin_box";
 				
-				$dd_res = mysqli_query( $db,$originName);
+				$dd_res = mysqli_query( $mysqli,$originName);
                  
                  while($r=mysqli_fetch_row($dd_res))
                  { 
@@ -46,7 +46,7 @@
         $des=$_POST["originName"]; 
         $count = "SELECT count(name) From(SELECT name,origin from beer UNION SELECT name,origin from soju UNION SELECT name,origin from cocktail UNION SELECT name,origin from etc UNION SELECT name,origin from liquor UNION SELECT name,origin from wine UNION SELECT name,origin from makgeolli) as t where origin='".$des."'  group by origin order by origin";
         $aa = "SELECT name From(SELECT name,origin from beer UNION SELECT name,origin from soju UNION SELECT name,origin from cocktail UNION SELECT name,origin from etc UNION SELECT name,origin from liquor UNION SELECT name,origin from wine UNION SELECT name,origin from makgeolli) as t where origin='".$des."' ";   //des가 받아온값이야          
-        $count_res = mysqli_query($db,$count);
+        $count_res = mysqli_query($mysqli,$count);
 		$res=mysqli_query($mysqli,$aa);
         
         echo "<h4>$des</h4>";
