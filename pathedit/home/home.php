@@ -1,9 +1,17 @@
 <?php 
-	include '../base.php';
+    ini_set('display_errors','0');
 	include '../config.php';
 
 	$userid = $_SESSION['userid'];
 	$userno = $_SESSION['userno'];
+
+	if(!isset($_SESSION['userid'])){
+        echo "<script> alert('Please, Log in first.');
+                location.replace('../index.php')</script>";
+        exit();
+	}
+	
+	include '../base.php';
 
 	// select user's pk(id) and favorite 3 hashtags from user_info table
 	// and use join to find the name of hashtag
@@ -39,12 +47,13 @@
 		$newhashrun = mysqli_query($db,$newhashsql);
 		while($newhashresult = mysqli_fetch_array($newhashrun)){
 			for ($j=0; $j<3; $j++) {
-				if ($newhashnoarr[$j] == 0 || $newhashnoarr[$j] == NULL) {
-					$newhashnoarr[$j]= $newhashresult[0];
-					if ($newhashnamearr[$i]==NULL || $newhashnamearr[$i] == "None") {
-						$newhashnamearr[$i] = $newhashresult[1];
+				if ($newhashnamearr[$i]==NULL || $newhashnamearr[$i] == "None") {
+					$newhashnamearr[$i] = $newhashresult[1];
+					if ($newhashnoarr[$j] == 0 || $newhashnoarr[$j] == NULL) {
+						$newhashnoarr[$j]= $newhashresult[0];
 					}
 				}
+				
 			}
 		}
 	}
@@ -61,6 +70,7 @@ echo'
 <article class="container">
 <div class="jumbotron" style="background-color : #F8F8FF">
 	<h2>Recommendation based on your favorite Hashtags!</h2>
+	<h5>If you don\'t have favorite hashtags, we can recommend hashtags to you randomly </h5>
 	<br>
 ';
 for ($a=1; $a<4; $a++){

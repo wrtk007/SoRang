@@ -5,7 +5,7 @@
     $content = $_GET['content'];
     $date = date('Y-m-d H:i:s');
     $query = "update qna set title='$title', content='$content', date='$date' where number=$number";
-    $result = mysqli_query( $mysqli,$query);
+    $result = mysqli_query( $db,$query);
     if($result) {
 ?>
         <script>

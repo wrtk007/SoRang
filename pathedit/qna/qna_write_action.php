@@ -1,7 +1,7 @@
 <?php
                 
                 include "../config.php";  // including configuration file
-                $id = $_GET['name'];                      //Writer
+                $id = $_GET['id'];                      //Writer
                 
                 $title = $_GET['title'];                  //Title
                 $content = $_GET['content'];              //Content

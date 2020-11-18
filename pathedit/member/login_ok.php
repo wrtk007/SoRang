@@ -1,10 +1,10 @@
 <?php   
    include "../config.php";
-   include "../password.php";
+   include "password.php";
 
    //POST로 받아온 아이다와 비밀번호가 비었다면 알림창을 띄우고 전 페이지로 돌아갑니다.
    if($_POST["userid"] == "" || $_POST["userpw"] == ""){
-      echo '<script> alert("아이디나 패스워드 입력하세요"); history.back(); </script>';
+      echo '<script> alert("You miss id or password"); history.back(); </script>';
    }else{
 
    //password변수에 POST로 받아온 값을 저장하고 sql문으로 POST로 받아온 아이디값을 찾습니다.
@@ -21,11 +21,11 @@
 	  $_SESSION['hash1'] = $member["taste_hash1"];
 	  $_SESSION['hash2'] = $member["taste_hash2"];
 	  $_SESSION['hash3'] = $member["taste_hash3"];
-	  $_SESSION['username'] = $member["username"];
-	  $_SESSION['useremail'] = $member["useremail"];
-	  echo "<script>alert('로그인되었습니다.'); location.href='/home/home.php';</script>";
+	  $_SESSION['username'] = $member["name"];
+	  $_SESSION['useremail'] = $member["email"];
+	  echo "<script>alert('Login success'); location.href='/home/home.php';</script>";
 	}else{ // 비밀번호가 같지 않다면 알림창을 띄우고 전 페이지로 돌아갑니다
-	   echo "<script>alert('아이디 혹은 비밀번호를 확인하세요.'); history.back();</script>";
+	   echo "<script>alert('Check your id or password again'); history.back();</script>";
 	}
    }
 ?>

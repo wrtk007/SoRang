@@ -4,14 +4,14 @@
                 $id = $_GET['id'];
                 $number = $_GET['number'];
                 $query = "select title, content, date, id from qna where number=$number";
-                $result = mysqli_query( $mysqli,$query);
+                $result = mysqli_query( $db,$query);
                 $rows = mysqli_fetch_assoc($result);
  
                 $title = $rows['title'];
                 $content = $rows['content'];
                 $usrid = $rows['id'];
  
-                session_start();
+                //session_start();
  
  
                 $URL = "./myqna.php";

@@ -34,9 +34,10 @@
 <body>
 <?php			include "../base.php";  // including base 
                 include "../config.php";  // including configuration file
-				session_start();
-                $query ="select * from qna where id = '".$_SESSION['userid']."' order by date ";
-				$result = mysqli_query( $mysqli,$query);
+				//session_start();
+				$userid = $_SESSION['userid'];
+                $query ="select * from qna where id = $userid order by date ";
+				$result = mysqli_query( $db,$query);
                 
                 $total = mysqli_num_rows($result);
  

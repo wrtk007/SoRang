@@ -55,7 +55,7 @@
                 <table class = "table2">
                         <tr>
                         <td>id</td>
-                        <td><input type="hidden" name="review_id" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
+                        <td><input type="hidden" name="id" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
                         </tr>
  
                         <tr>
