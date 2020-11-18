@@ -2,13 +2,13 @@
 include "../base.php";
 include "../config.php";
 $alcname22 = $_GET['name'];
-echo $alcname22;
 $_SESSION["name"] = $alcname22;
 ?>
 
     <article class="container">
 		<div class="jumbotron" sttle="background-color : #F8F8FF">
 			<h1>Insert Review</h1>
+            <h3><?php echo $alcname22;?></h3>
             <br>
             <form class="insert_review" method="POST" action="insert_review_action.php">
             	<h2>score: </h2>

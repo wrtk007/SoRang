@@ -16,18 +16,8 @@ include "../config.php";
     $result = mysqli_fetch_row(mysqli_query($db,$sql));
     $reviewpk = $result[0];
     $reviewpk++;
-    echo $reviewpk;
 
-//     			$sql_random = "SELECT ROUND((RAND()*100)+1 AS random_num";
-//     			$run_sql_random = mysqli_query($db, $sql_random);
-//     			$review_no = mysqli_fetch_all($run_sql_random or die(mysqli_error($db)));
-//     			echo $review_no;
-    
-    //user ������ session����, review�� �ʿ��� ������ �Է����� �ޱ�
-    //�Է¹��� review db�� insert
-    $sql_insert = "INSERT INTO user_review VALUES ($reviewpk, $userno, $review, $score, $date, $alcname333)";
-    echo $sql_insert;
-    mysqli_query($db, $sql_insert);
+    $sql_insert = "INSERT INTO user_review VALUES ($reviewpk, $userno, '$review', $score, '$date', '$alcname333')";
 
     if (mysqli_query($db, $sql_insert)) { ?>
         <article class="container">
