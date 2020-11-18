@@ -5,65 +5,49 @@
 	$userid = $_SESSION['userid'];
 	$userno = $_SESSION['userno'];
 
-    static $hash1;
-    static $hash2;
-    static $hash3;
+	// select user's pk(id) and favorite 3 hashtags from user_info table
+	// and use join to find the name of hashtag
+	$var=0;
+	$sql = "SELECT `user_info`.`id`,`user_info`.`taste_hash1`, `user_info`.`taste_hash2`, `user_info`.`taste_hash3`, `hashtag`.* \n"
 
-	$hashsql = "SELECT taste_hash1, taste_hash2, taste_hash3 FROM user_info WHERE user_no=$userno IS NOT NULL";
-	$hashrun = mysqli_query($db,$hashsql);
+    . "FROM `user_info` \n"
 
-	while($hashresult = mysqli_fetch_array($hashrun)) {
-		$hash1 = $hashresult[0];
-		$hash2 = $hashresult[1];
-		$hash3 = $hashresult[2];
+    . "LEFT JOIN `hashtag` \n"
+
+    . "ON `user_info`.`taste_hash1` = `hashtag`.`hashtag_no` \n"
+
+    . "	OR `user_info`.`taste_hash2`=`hashtag`.`hashtag_no`\n"
+
+    . "	OR `user_info`.`taste_hash3`=`hashtag`.`hashtag_no` \n"
+
+    . "WHERE `user_no`=$userno";
+	$runsql = mysqli_query($db, $sql);
+	while ($result = mysqli_fetch_array($runsql)) {
+		$newid = $result[0]; //user's pk
+		$newhash1 = $result[1]; //taste_hash1 from user_info
+		$newhash2 = $result[2]; //taste_hash2 from user_info
+		$newhash3 = $result[3]; //taste_hash3 from user_info
+		$newhashnamearr[$var] = $result[5]; //hashtag name array
+		$var++;
 	}
 
-	static $tab1;
-	static $tab2;
-	static $tab3;
+	$newhashnoarr = [$newhash1, $newhash2, $newhash3]; //hashtag no(pk) array
 
-	static $hasharr;
-	static $hashnoarr;
-	static $tabarr;
-
-	$hashnoarr = [$hash1, $hash2, $hash3];
-
-	if ($hash1 == NULL || $hash2 == NULL || $hash3 == NULL || $hash1 ==0 || $hash2==0 || $hash3 == 0) {
-		// if user doesn't choose own favorite hashtag, then choose randomly
-		$newhashsql = "SELECT hashtag_no FROM hashtag WHERE hashtag_no NOT IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
+	//if user doesn't have favorite hashtag, then recommend random hashtag
+	for ($i = 0; $i<3; $i++) {
+		$newhashsql = "SELECT * FROM hashtag WHERE hashtag_no NOT IN ($newhash1, $newhash2, $newhash3) ORDER BY RAND() LIMIT 1";
 		$newhashrun = mysqli_query($db,$newhashsql);
-
-		while($newhashresult = mysqli_fetch_array($newhashrun)) {
-			$i = 0;
-			if ($hash1 == 0 || $hash1 == NULL) {
-				$hash1 = $newhashresult[$i];
-				$i++;
-			} else if ($hash2 == 0 || $hash2 == NULL ) {
-				$hash2 = $newhashresult[$i];
-				$i++;
-			} else if ($hash3 == 0|| $hash3 == NULL){
-				$hash3 = $newhashresult[$i];
-				$i++;
+		while($newhashresult = mysqli_fetch_array($newhashrun)){
+			for ($j=0; $j<3; $j++) {
+				if ($newhashnoarr[$j] == 0 || $newhashnoarr[$j] == NULL) {
+					$newhashnoarr[$j]= $newhashresult[0];
+					if ($newhashnamearr[$i]==NULL || $newhashnamearr[$i] == "None") {
+						$newhashnamearr[$i] = $newhashresult[1];
+					}
+				}
 			}
 		}
 	}
-	
-	$hashnoarr=[$hash1, $hash2, $hash3];
-
-    $hash1sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = $hash1";
-	$hash2sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = $hash2";
-	$hash3sql = "SELECT hashtag_name FROM hashtag WHERE hashtag_no = $hash3";
-
-	$hashrun = mysqli_query($db,$hash1sql);
-    $hash1txt = mysqli_fetch_row($hashrun);
-
-	$hashrun = mysqli_query($db,$hash2sql);
-    $hash2txt = mysqli_fetch_row($hashrun);
-    
-	$hashrun = mysqli_query($db,$hash3sql);
-    $hash3txt = mysqli_fetch_row($hashrun);
-
-	$hasharr = [$hash1txt[0], $hash2txt[0], $hash3txt[0]];
 
 	//choose random alchol type
 	$tabsql = "SELECT tab_name FROM alcoholtable ORDER BY RAND() LIMIT 3";
@@ -83,11 +67,11 @@ for ($a=1; $a<4; $a++){
 	$b = $a-1;
 		echo '
 	<div class="hash'.$a.'">
-		<h3>Hashtag '.$a.' : '.$hasharr[$b].'</h3>
+		<h3>Hashtag '.$a.' : '.$newhashnamearr[$b].'</h3>
 		<div class="row">';
 		for($c=0; $c<3; $c++){
 			$resultarr = [];
-			$alcsql = "SELECT no, name, exp FROM $tabarr[$b] WHERE $hashnoarr[$b] IN ($hash1, $hash2, $hash3) ORDER BY RAND() LIMIT 3";
+			$alcsql = "SELECT name, exp FROM $tabarr[$b] WHERE $newhashnoarr[$b] IN ($newhash1, $newhash2, $newhash3) ORDER BY RAND() LIMIT 3";
 			$alcrun = mysqli_query($db, $alcsql);
 			while (	$alcresult = mysqli_fetch_array($alcrun)) {
 				$d=0;
@@ -97,6 +81,7 @@ for ($a=1; $a<4; $a++){
 				$d++;
 			}
 			$d=0;
+		
 		 echo'
 	 			<div class="col-sm-4" id=".result+'.$d.'.">
 				<div class="card">
