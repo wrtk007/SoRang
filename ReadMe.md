@@ -21,8 +21,7 @@
 
 ### Data query & Web Page Code
 1. [Database query](./Databasequery)
-2. Data Manipulation Language <!-- INSERT할 때 쿼리만 -->
-3. Web Page Code
+2. [Web Page Code](./pathedit)
 
 <hr>
 

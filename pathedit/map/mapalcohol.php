@@ -43,8 +43,8 @@
          $des1=$_POST["tabName"]; 
 		 $cc = "select origin, round((COUNT(*) / _total ) * 100,2) as Percentege from $des1,(select COUNT(*) AS _total FROM $des1) as myTotal GROUP BY origin";
 		 $dd = "select COALESCE(origin,'ALL origin') as origin,round(AVG(score),2)as avg_score FROM $des1 GROUP BY origin with ROLLUP ";
-         $cc_res = mysqli_query($mysqli,$cc);
-		 $dd_res = mysqli_query($mysqli,$dd);
+         $cc_res = mysqli_query($db,$cc);
+		 $dd_res = mysqli_query($db,$dd);
 		 
          
  
