@@ -1,9 +1,10 @@
-<!DOCTYPE html>
- 
-<html>
-<head>
-        <meta charset = 'utf-8'>
-</head>
+<?php			
+        include "../base.php";  // including base 
+        include "../config.php";  // including configuration file
+
+        $userid = $_SESSION['userid'];
+?>
+
 <style>
         table{
                 border-top: 1px solid #444444;
@@ -33,8 +34,7 @@
 </style>
 <body>
 <?php			
-        include "../base.php";  // including base 
-        include "../config.php";  // including configuration file
+        
         $query ="select * from qna order by number desc";
         $result = mysqli_query($db,$query);
         
@@ -66,7 +66,7 @@
                 <td width = "500" align = "center">
                 <a href = "qna_view.php?number=<?php echo $rows['number']?>">
                 <?php echo $rows['title']?></td>
-                  <td width = "100" align = "center"><?php echo $rows['id']?></td>
+                  <td width = "100" align = "center"><?php echo $userid?></td>
                 <td width = "200" align = "center"><?php echo $rows['date']?></td>
                 
                 </tr>

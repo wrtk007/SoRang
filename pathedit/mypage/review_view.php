@@ -1,5 +1,10 @@
 <!DOCTYPE html>
- 
+<?php
+  include "../base.php";
+  include "../config.php";
+  
+?>
+
 <html>
 <head>
         <meta charset = 'utf-8'>
@@ -78,59 +83,29 @@ width: 500px;
 </style>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="#">Drink Review</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="main.php"> Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Rank</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../snack/snack_home.php">Snack</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Alcohol Map</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Page
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Log in / Log out</a>
-                <a class="dropdown-item" href="#">Sign up</a>
-                <a class="dropdown-item" href="../mypage/myreview.php">My Page</a>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
+
     <?php
-                $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
                 $number = $_GET['number'];
-                session_start();
-                $query = "select review_title, review, review_id from user_review where review_no =$number";
-                $result = $connect->query($query);
+                $query = "select alc_name, review, review_score from user_review where review_no =$number";
+                $result = $db->query($query);
                 $rows = mysqli_fetch_assoc($result);
- 
+                $score = $rows['review_score'];
+                //$alcohol_table= $rows['review_alc_table'];
+               
+                //$query1 = "select name from $sql_alctype where no =$alcohol_name";
+                //$result1 = $db->query($query1);
+                //$rows1 = mysqli_fetch_assoc($result1);
                 
         ?>
  
         <table class="view_table" align=center>
         <tr>
-                <td colspan="4" class="view_title"><?php echo $rows['review_title']?></td>
+                <td colspan="4" class="view_title"><?php echo $rows['alc_name']?></td>
         </tr>
+        
         <tr>
-                <td class="view_id">id</td>
-                <td class="view_id2"><?php echo $rows['review_id']?></td>
+                <td class="view_id">Score</td>
+                <td class="view_id2"><?php echo $score ?></td>
         </tr>
  
  

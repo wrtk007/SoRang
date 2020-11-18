@@ -6,7 +6,7 @@
     $number = $_GET['number'];
    
     $query ="delete from qna where number=$number";
-    $result = mysqli_query( $mysqli,$query);
+    $result = mysqli_query( $db,$query);
     if($result) {
 ?>
 

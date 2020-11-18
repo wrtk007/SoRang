@@ -32,7 +32,7 @@
   <?php
 
   $sql_alc = "select name,img,recipe, exp from snack where matching1_table=1 ";
-  $run_alc = mysqli_query($connect, $sql_alc);
+  $run_alc = mysqli_query($db, $sql_alc);
   while($result_alc = mysqli_fetch_array($run_alc)) {
     echo '
     <a href="#" class="list-group-item list-group-item-action">

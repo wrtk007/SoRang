@@ -2,7 +2,6 @@
   include "../base.php";
   include "../config.php";
   
-  //$connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
 ?>
 
 <!DOCTYPE html>
@@ -46,29 +45,20 @@
 
     </nav>
 <?php
-        //$sql = mq("select * from member where id='".$_POST['userid']."'");
-                $usrid=$_SESSION['userid'];
-               // $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
-                $query ="select * from user_review where review_id='".$_SESSION['userid']."' order by review_no desc";
+      
+                $query ="select * from user_review where review_id_no='".$_SESSION['userno']."' order by review_no desc";
                 $result = $db->query($query);
                 $total = mysqli_num_rows($result);  
-                   
-               // $rows = mysqli_fetch_assoc($result);
-                //$usrid = $rows['review_id'];
-               // session_start();
-              
+         
 ?>
                 
-
-
-
         <br><br>
         <h2 align=center>My review</h2>
         <table align = center>
         <thead align = "center">
         <tr>
-        <td width = "50" align="center">no</td>
-        <td width = "500" align = "center">title</td>
+        <td width = "50" align="center">No</td>
+        <td width = "500" align = "center">Alcohol name</td> 
         <!-- <td width = "100" align = "center">작성자</td> -->
         
         </tr>
@@ -86,7 +76,7 @@
                 <td width = "50" align = "center"><?php echo $total?></td>
                 <td width = "500" align = "center">
                 <a href = "review_view.php?number=<?php echo $rows['review_no']?>">
-                <?php echo $rows['review_title']?></td>
+                <?php  echo $rows['alc_name']?></td>
                   <!-- <td width = "100" align = "center"></td> -->
                 
                 </tr>

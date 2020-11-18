@@ -1,7 +1,7 @@
 <?php
                 
                 include "../config.php";  // including configuration file
-                $id = $_GET['id'];                      //Writer
+                $id = $_SESSION['userno'];                  //Writer
                 
                 $title = $_GET['title'];                  //Title
                 $content = $_GET['content'];              //Content
@@ -26,5 +26,5 @@
                         echo "FAIL";
                 }
  
-                mysqli_close($connect);
+                // mysqli_close($connect);
 ?>

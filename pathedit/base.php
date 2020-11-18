@@ -8,7 +8,8 @@ static $alcoholmaporiginphp = 'http://localhost/map/maporigin.php';
 static $mypagephp = 'http://localhost/mypage/mypage.php';
 static $logoutphp = 'http://localhost/member/logout.php';
 static $myreviewphp = 'http://localhost/mypage/myreview.php';
-static $myqnaphp = 'http://localhost/qna/qna.php';
+static $myqnaphp = 'http://localhost/mypage/myqna.php';
+static $qnaphp = 'http://localhost/qna/qna.php';
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +59,7 @@ static $myqnaphp = 'http://localhost/qna/qna.php';
               </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="location.href='<?php echo $myqnaphp?>'">Help</a>
+                <a class="nav-link" href="#" onclick="location.href='<?php echo $qnaphp?>'">Help</a>
             </li>
           </ul>
         </div>
