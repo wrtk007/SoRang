@@ -25,21 +25,21 @@ $price_lowest = 0;
             
             <?php 
             $sql_rank_drink = "SELECT RANK() OVER (ORDER BY total_drink.score DESC) as drink_ranking, total_drink.*
-                                FROM ( SELECT name, exp, score, img, price FROM beer WHERE price < $price_highest and price >= $price_lowest
+                                FROM ( SELECT * FROM beer WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM cocktail WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM cocktail WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM etc WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM etc WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM liquor WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM liquor WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM makgeolli WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM makgeolli WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM nonalcohol WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM nonalcohol WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM soju WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM soju WHERE price < $price_highest and price >= $price_lowest
                                         UNION
-                                        SELECT name, exp, score, img, price FROM wine WHERE price < $price_highest and price >= $price_lowest
+                                        SELECT * FROM wine WHERE price < $price_highest and price >= $price_lowest
                                         ) total_drink
                                 ";
             $run_sql = mysqli_query($db, $sql_rank_drink);
@@ -58,6 +58,7 @@ $price_lowest = 0;
                                     <h4 class="card-title">name: '.$result["name"].'</h4>
                                     <h4 class="card-title">stars: '.$result["score"].'</h4>
                                     <h4 class="card-title">price: '.$result["price"].'</h4>
+                                    <h4 class="card-title">origin: '.$result["origin"].'</h4>
                                     <h4 class="card-title">detail: '.$result["exp"].'</h4>
                                     
                                     <input type="hidden" name="name" value="'.$result["name"].'">

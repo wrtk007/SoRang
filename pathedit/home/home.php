@@ -72,7 +72,9 @@ echo'
 	<h2>Recommendation based on your favorite Hashtags!</h2>
 	<h5>If you don\'t have favorite hashtags, we can recommend hashtags to you randomly </h5>
 	<br>
+	<h2>Member\'s favorite hashtag : </h2>
 ';
+
 for ($a=1; $a<4; $a++){
 	$b = $a-1;
 		echo '
@@ -110,4 +112,37 @@ for ($a=1; $a<4; $a++){
 	';
 }
 	
+?>
+
+<?php
+	$minsql = "SELECT MIN(review_date) FROM user_review";
+	$maxsql = "SELECT MAX(review_date) FROM user_review";
+
+	$mindate = mysqli_fetch_row(mysqli_query($db, $minsql));
+	$maxdate = mysqli_fetch_row(mysqli_query($db, $maxsql));
+
+?>
+
+<form action="home.php" method="POST">
+      <p>Date from<input type="date" name="datefrom" value=<?php echo date('Y-m-d');?> min=<?php echo $mindate[0];?> max=<?php echo $maxdate[0];?> > </p>
+	  <p>Date to<input type="date" name="dateto" value=<?php echo date('Y-m-d');?> min=min=<?php echo $mindate[0];?> max=<?php echo $maxdate[0];?> > </p>
+      <p><input type="submit" value="search"></p>
+</form>
+
+<?php 
+	$new_date_from = date('Y-m-d', strtotime($_POST['datefrom']));
+	$new_date_to = date('Y-m-d', strtotime($_POST['dateto']));
+	$new_date_from1 = $new_date_from." 00:00:00";
+	$new_date_to1 = $new_date_to." 00:00:00";
+
+	$reviewsql = "SELECT alc_name, review FROM user_review WHERE review_date<'$new_date_to1' AND review_date>'$new_date_from1'";
+	$reviewrun = mysqli_query($db, $reviewsql);
+
+	echo "<h5>Reviews between from $new_date_from1 to $new_date_to1 </h5>";
+	while($plz = mysqli_fetch_row($reviewrun)) {
+		echo $plz[0];
+		echo '<br>';
+		echo $plz[1];
+		echo '<br>';
+	}
 ?>

@@ -12,6 +12,9 @@
 		<div class="jumbotron" sttle="background-color : #F8F8FF"> 
 		<form name="aldropdown" method="post" action="mapalcohol.php">
 		<center>
+			<h3 align = "left">  When you select a type of alcohol, </h2>
+         <h3 align="left"> the ratio and average of the selected type of alcohol by origin are displayed.</h2>
+
 			<h2 align="center">Alchol Map</h2>
 		    <strong> Select alcohol type : </strong> 
 			<select name="tabName"> 

@@ -64,36 +64,71 @@ $alcname = $_GET["name"];
                 <?php 
                 //////////////전체 평균 별점 추가////////////////
                 //사용자들의 평균 별점 출력
-                $sql_count_review = "SELECT AVG(review_score) FROM user_review WHERE alc_name = '$alcname'";
+                $sql_count_review = "SELECT AVG(user_review.review_score) FROM user_review WHERE user_review.alc_name = '$alcname'";
                 $run_sql_count = mysqli_query($db, $sql_count_review);
-                $avg_score = mysqli_fetch_array($run_sql_count) or die(mysqli_error($db));
+                $avg_score = mysqli_fetch_array($run_sql_count);
                 echo "사용자 평균 평점 : ";
                 echo $avg_score[0];
                 echo '<br>';
                 
                 //해당 술에 대한 모든 리뷰 출력
-                $sql_detail_drink = "SELECT * FROM user_review WHERE alc_name = '$alcname'";
+                $sql_detail_drink = "SELECT * FROM user_review WHERE user_review.alc_name = '$alcname'";
                 $run_sql_detail_drink = mysqli_query($db, $sql_detail_drink);
                 
                 while($result_reviews = mysqli_fetch_array($run_sql_detail_drink)){
                     $user_id_no = $result_reviews["review_id_no"];
-                    $sql_id = "SELECT id FROM user_info WHERE user_info.user_no = $user_id_no";
+                    $sql_id = "SELECT id FROM user_info WHERE user_info.user_no = '$user_id_no'";
                     $run_sql_id = mysqli_query($db, $sql_id);
                     $user_id = mysqli_fetch_array($run_sql_id);
+                    
                     echo '
                     <div class="review" style="border:2px solid gray;">
                             <div class="card-block">
-                                <h4 class="card-title" style="font-size:15px;">score: '.$result_reviews["review_score"].'       /       id: '.$user_id[0].'      /       date: '.$result_reviews["review_date"].'</h4>
+                                <h4 class="card-title" style="font-size:15px;">score: '.$result_reviews["review_score"].'       /       id: <?php $user_id ?>       /       date: '.$result_reviews["review_date"].'</h4>
                                 <h4 class="card-title" style="font-size:15px;">review: '.$result_reviews["review"].'</h4>
+                                 
+                                <div class="submit_delete">
+                                <form action="delete_review.php" method="GET"  id="myForm_delete">
+                                    <button>delete</button><br>
+                                    <input type="hidden" name="review_date_delete" value="'.$result_reviews["review_date"].'">
+                                </form>
+                                </div>
+                                <div class="submit_modify">
+                                <form action="modify_review.php" method="GET"  id="myForm_modify">
+                                    <button>modify</button><br>
+                                    <input type="hidden" name="review" value="'.$result_reviews["review"].'">
+                                </form>
+                                </div>
+                             </div>
                             </div>
                     </div>
                     ';
-                }?>
+                }
+                
+                ?>
+                </div>
+            </div>
+            <br>
+
+      </div>
+    </article>
     <script>
     const myForm = document.getElementById("myForm");
         document.querySelector(".submit").addEventListener("click", function(){
 
         myForm.submit();
+
+    });
+        const myForm_delete = document.getElementById("myForm_delete");
+        document.querySelector(".submit_delete").addEventListener("click", function(){
+
+        myForm_delete.submit();
+
+    });
+        const myForm_modify = document.getElementById("myForm_modify");
+        document.querySelector(".submit_modify").addEventListener("click", function(){
+
+        myForm_modify.submit();
 
     });
     </script>

@@ -1,13 +1,12 @@
 <?php
+    ini_set('display_errors','0');
     include '../config.php';
 
     $user_id = $_SESSION['userid'];
     $user_no = $_SESSION['userno'];
 
-    $curpw = password_hash($_POST['currentPassword'],PASSWORD_DEFAULT);
     $newpw = password_hash($_POST['newPassword'],PASSWORD_DEFAULT);
     $checkpw = password_hash($_POST['confirmPassword'],PASSWORD_DEFAULT);
-
 
     if ($_POST['newPassword'] == "") {
         echo "<script>alert('Type the New Password'); history.back(); </script>";

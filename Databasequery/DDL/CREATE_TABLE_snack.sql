@@ -4,10 +4,8 @@ CREATE TABLE IF NOT EXISTS `team15`.`snack` (
     `recipe` TEXT,
     `exp` TEXT,
     `img` TEXT,
-    `matching1_table` INT(5),
-    `matching2_table` INT(5),
-    `matching1_no` INT(5),
-    `matching2_no` INT(5),
+    `matching1_table` INT(5) FOREIGN KEY,
+    `matching1_no` INT(5) FOREIGN KEY,
     PRIMARY KEY (`no`),
     INDEX `snack_index` (`no`, `name`)
 )
