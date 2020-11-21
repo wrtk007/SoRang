@@ -1,5 +1,5 @@
 <?php
-    // ini_set('display_errors','0');
+    ini_set('display_errors','0');
     include '../config.php';  
     
     $userid = $_SESSION['userid'];
@@ -82,10 +82,6 @@
                 <table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
                 <tr class="tableheader">
                 <td colspan="2">Change Password</td>
-                </tr>
-                <tr>
-                <td width="40%"><label>Current Password</label></td>
-                <td width="60%"><input type="password" name="currentPassword" class="txtField"/><span id="currentPassword"  class="required"></span></td>
                 </tr>
                 <tr>
                 <td><label>New Password</label></td>

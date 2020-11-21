@@ -86,18 +86,21 @@
  <body>
  
  <?php    
-           // $connect = mysqli_connect('localhost', 'root', '1234', 'team15') or die ("connect fail");
             $id = $_GET['id'];
             $number = $_GET['number'];
-            $query = "select review_title, review, review_id from user_review where review_no =$number";
+            $query = "select review_id_no, alc_name, review,review_score from user_review where review_no =$number";
             $result = $db->query($query);
             $rows = mysqli_fetch_assoc($result);
- 
-            $title = $rows['review_title'];
-            $content = $rows['review'];
-            $usrid = $rows['review_id'];
- 
-           // session_start();
+               
+
+                $content = $rows['review'];
+                $score = $rows['review_score'];
+                //$alcohol_name=$rows['review_alc_no'];
+                //$query1 = "select name from $sql_alctype where no =$alcohol_name";
+                //$result1 = $db->query($query1);
+                //$rows1 = mysqli_fetch_assoc($result1);
+                //$alcohol_name = $rows1['name'];
+                $reviewno = $rows['review_id_no'];
  
  
             $URL = "./myreview.php";
@@ -110,29 +113,33 @@
                                 location.replace("<?php echo $URL?>");
                   </script>
         <?php   }
-                else if($_SESSION['userid']==$usrid) {
+                else if($_SESSION['userno']==$reviewno) {
         ?>
         <br>
         <form method = "get" action = "review_modify_action.php">
         <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
                 <tr>
-                <td height=20 align= center bgcolor=#ccc><font color=white> 글수정</font></td>
+                <td height=20 align= center bgcolor=#ccc><font color=white> Edit</font></td>
                 </tr>
                 <tr>
                 <td bgcolor=white>
                 <table class = "table2">
                 <tr>
-                        <td>작성자</td>
-                        <td><input type="hidden" name="id" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
-                        </tr>
+                        
  
+                        
                         <tr>
-                        <td>제목</td>
-                        <td><input type = text name = review_title size=60 value="<?=$title?>"></td>
+                        <td>Score</td>
+                        <td><input type="hidden" name="id" value="<?=$score?>"><?=$score?></td>
                         </tr>
- 
+                        
                         <tr>
-                        <td>내용</td>
+                        <td>Alchol name</td>
+                        <td><input type = hidden name = review_alcname size=60 value="<?=$rows['alc_name']?>"><?=$rows['alc_name']?></td>
+                        </tr>
+                        
+                        <tr>
+                        <td>content</td>
                         <td><textarea name = review cols=85 rows=15><?=$content?></textarea></td>
                         </tr>
  
@@ -146,13 +153,8 @@
                 </tr>
         </table>
         <?php   }
-                else {
-        ?>              <script>
-                                alert("권한이 없습니다.");
-                                location.replace("<?php echo $URL?>");
-                        </script>
-        <?php   }
-        ?>
+               
+        ?>             
        
  </body>
  </html>

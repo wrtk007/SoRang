@@ -1,6 +1,0 @@
-LOAD DATA LOCAL INFILE 'C:/Users/ejko1/Desktop/Snack.csv'
-REPLACE INTO TABLE `Snack`
-COLUMNS TERMINATED BY ',' ENCLOSED BY '"'
-LINES TERMINATED BY '\n' IGNORE 1 LINES
-(@snack_no, @snack_name, @snack_recipe, @snack_exp, @snack_img, @matching1_table, @mathcing1_no, @matching2_table, @matching2_no)														
-SET `snack_no`= @snack_no, `snack_name`=@snack_name, `snack_recipe`=@snack_recipe, `snack_exp` = @snack_exp, `snack_img`=@snack_img, `matching1_table` =@matching1_table, `matching1_no`=@matching1_no, `matching2_table` =@matching2_table, `matching2_no`=@matching2_no

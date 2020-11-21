@@ -4,8 +4,8 @@
 ?>
 
 <article class="container">
-  <br><br>
-  <h3>Recommended snacks that go with alcohol</h3><br>
+<br><br>
+<h3>Recommended snacks that go well with  alcohol</h3><br>
 <div class="jumbotron" sttle="background-color : #F8F8FF">
   <div class="selectbox">
   <div class="btn-group">
@@ -61,12 +61,9 @@
         <p class="mb-1">'.$result_alc["snack_ids"].'
         <a href="./snack_'.$sql_alctype.'.php">더보기</a></p>
         <br>
-    </a>
-    </div>
+        </a>
   ';
-
-}
-
-?>
+  }
+  ?>
 </div>
 </article>

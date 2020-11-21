@@ -1,9 +1,8 @@
-<!DOCTYPE html>
- 
-<html>
-<head>
-        <meta charset = 'utf-8'>
-</head>
+<?php         
+        include "../base.php";  // including base 
+        include "../config.php";  // including configuration file
+      ?>
+
 <style>
         table{
                 border-top: 1px solid #444444;
@@ -31,14 +30,15 @@
         a:link {color : #57A0EE; text-decoration:none;}
         a:hover { text-decoration : underline;}
 </style>
-<body>
-<?php			include "../base.php";  // including base 
-                include "../config.php";  // including configuration file
-				session_start();
-                $query ="select * from qna where id = '".$_SESSION['userid']."' order by date ";
-				$result = mysqli_query( $mysqli,$query);
+
+<?php         
+
+        $userid = $_SESSION['userid'];
+        $userno = $_SESSION['userno'];
+        $query ="select * from qna where id = $userno order by date ";
+        $result = mysqli_query( $db,$query);
                 
-                $total = mysqli_num_rows($result);
+        $total = mysqli_num_rows($result);
  
         ?>
         <h2 align=center>my Q&A</h2>
@@ -66,7 +66,7 @@
                 <td width = "500" align = "center">
                 <a href = "./myqna_view.php?number=<?php echo $rows['number']?>">
                 <?php echo $rows['title']?></td>
-                  <td width = "100" align = "center"><?php echo $rows['id']?></td>
+                  <td width = "100" align = "center"><?php echo $userid?></td>
                 <td width = "200" align = "center"><?php echo $rows['date']?></td>
                 
                 </tr>

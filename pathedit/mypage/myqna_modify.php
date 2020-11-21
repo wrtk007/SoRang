@@ -1,17 +1,16 @@
-<?php     	
-				include "../base.php";  // including base 
-				include "../config.php";  // including configuration file
+<?php        
+            include "../base.php";  // including base 
+            include "../config.php";  // including configuration file
                 $id = $_GET['id'];
                 $number = $_GET['number'];
                 $query = "select title, content, date, id from qna where number=$number";
-                $result = mysqli_query( $mysqli,$query);
+                $result = mysqli_query( $db,$query);
                 $rows = mysqli_fetch_assoc($result);
  
                 $title = $rows['title'];
                 $content = $rows['content'];
                 $usrid = $rows['id'];
  
-                session_start();
  
  
                 $URL = "./myqna.php";
@@ -22,7 +21,7 @@
                                 location.replace("<?php echo $URL?>");
                         </script>
         <?php   }
-                else if($_SESSION['userid']==$usrid) {
+                else if($_SESSION['userno']==$usrid) {
         ?>
         <form method = "get" action = "myqna_modify_action.php">
         <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
@@ -57,10 +56,8 @@
                 </tr>
         </table>
         <?php   }
-                else {
-        ?>              <script>
-                                alert("You need to login");
-                                location.replace("<?php echo $URL?>");
-                        </script>
-        <?php   }
-        ?>
+                else 
+                        echo "<h4>Welcome! {$_SESSION['userno']} </h4>";
+                       
+
+        ?>         

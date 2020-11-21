@@ -1,6 +1,0 @@
-LOAD DATA LOCAL INFILE 'C:/Users/ejko1/Desktop/Liquor.csv'
-REPLACE INTO TABLE `Liquor`
-COLUMNS TERMINATED BY ',' ENCLOSED BY '"'
-LINES TERMINATED BY '\n' IGNORE 1 LINES
-(@liq_no, @liq_name, @liq_rank, @liq_exp, @liq_origin, @hashtag1, @hashtag2, @hashtag3, @liq_score, @liq_img)														
-SET `liq_no` = @liq_no, `liq_name` = @liq_name, `liq_rank`= @liq_rank, `liq_exp` = @liq_exp, `liq_origin`= @liq_origin, `hashtag1`=@hashtag1, `hashtag2`=@hashtag2, `hashtag3` = @hashtag3, `liq_score`=@liq_score, `liq_img` = @lig_img

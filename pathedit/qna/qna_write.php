@@ -1,7 +1,8 @@
-<!DOCTYPE>
  <?php
                 include "../base.php";  // including base 
+                include "../config.php";
                 $URL = "./qna.php"; 
+                $_SESSION['userno'];
                 if(!isset($_SESSION['userid'])) {
         ?>
 				
@@ -14,12 +15,6 @@
         ?>
 
 
-
- 
-<html>
-<head>
-        <meta charset = 'utf-8'>
-</head>
 <style>
         table.table2{
                 border-collapse: separate;
@@ -55,7 +50,7 @@
                 <table class = "table2">
                         <tr>
                         <td>id</td>
-                        <td><input type="hidden" name="review_id" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
+                        <td><input type="hidden" name="id" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
                         </tr>
  
                         <tr>

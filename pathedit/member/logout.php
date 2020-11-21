@@ -1,5 +1,5 @@
 <?php
-	include "../db.php";
+	include "../config.php";
 	session_destroy();
 ?>
 <meta charset="utf-8">
