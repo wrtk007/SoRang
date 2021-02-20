@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS `team15`.`Wine` (
+    `table_no` INT(5) NOT NULL;
     `no` INT(5) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL UNIQUE KEY,
     `exp` TEXT,
